@@ -1,0 +1,21 @@
+{
+  "name": "searchable-image",
+  "version": "1.0.0",
+  "license": "CC0-1.0",
+  "author": "hata6502",
+  "type": "module",
+  "main": "docs/index.js",
+  "scripts": {
+    "build": "tsc --noCheck && esbuild src/index.tsx --bundle --format=esm --minify --outfile=docs/index.js",
+    "start": "http-server -c-1 docs",
+    "test": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/preact-custom-element": "^4.0.4",
+    "esbuild": "^0.24.2",
+    "http-server": "^14.1.1",
+    "preact": "^10.25.4",
+    "preact-custom-element": "^4.3.0",
+    "typescript": "^5.7.2"
+  }
+}

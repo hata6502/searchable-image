@@ -1,0 +1,23 @@
+.container {
+  display: inline-block;
+  position: relative;
+}
+
+.image {
+  vertical-align: bottom;
+}
+
+.text {
+  position: absolute;
+  color: transparent;
+
+  &::selection {
+    background: #cceeff;
+    color: #000000;
+  }
+}
+
+.text-layer {
+  position: absolute;
+  inset: 0;
+}
