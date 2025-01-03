@@ -6,7 +6,7 @@
   "type": "module",
   "main": "docs/index.js",
   "scripts": {
-    "build": "tsc --noCheck && esbuild src/index.tsx --bundle --format=esm --minify --outfile=docs/index.js",
+    "build": "tsc --noCheck && esbuild src/index.tsx --bundle --format=esm --minify --outfile=docs/index.js && npx tailwindcss -i src/doc.css -o docs/doc.css --minify",
     "start": "http-server -c-1 docs",
     "test": "tsc --noEmit"
   },
@@ -16,6 +16,7 @@
     "http-server": "^14.1.1",
     "preact": "^10.25.4",
     "preact-custom-element": "^4.3.0",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2"
   }
 }
