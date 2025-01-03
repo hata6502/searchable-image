@@ -2,6 +2,9 @@ import { ComponentChildren, FunctionComponent } from "preact";
 import { useEffect, useRef, useState } from "preact/hooks";
 import register from "preact-custom-element";
 
+const cssURL =
+  "https://cdn.jsdelivr.net/npm/searchable-image@1.0.1/docs/index.css";
+
 const obserableAttributes = [
   "alt",
   "crossorigin",
@@ -159,7 +162,7 @@ const SearchableImage: FunctionComponent<
 
   return (
     <>
-      <link rel="stylesheet" href="index.css" />
+      <link rel="stylesheet" href={cssURL} />
 
       <div className="container">
         <img ref={image} className="image" />

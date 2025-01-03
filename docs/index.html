@@ -8,18 +8,25 @@
       content="
         default-src 'self';
         img-src 'self' https://i.gyazo.com;
-        style-src 'self' 'unsafe-inline';
+        style-src
+          'self'
+          'unsafe-inline'
+          https://cdn.jsdelivr.net/npm/searchable-image@1.0.1/docs/index.css
+        ;
       "
     />
 
     <meta
       name="description"
-      content="Line-by-line image diff tool for comparing documents"
+      content="This Web Component enables users to search for and select text within images"
     />
-    <meta property="og:image" content="https://diff.hata6502.com/favicon.png" />
+    <meta
+      property="og:image"
+      content="https://searchable-image.hata6502.com/favicon.png"
+    />
     <meta property="og:title" content="Searchable Image" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://diff.hata6502.com/" />
+    <meta property="og:url" content="https://searchable-image.hata6502.com/" />
     <meta name="twitter:card" content="summary" />
 
     <link rel="apple-touch-icon" href="/favicon.png" />
@@ -30,53 +37,225 @@
 
     <title>Searchable Image</title>
   </head>
-  <body>
-    <s-img
-      alt="A signboard explaining how to eat udon with soup"
-      src="https://i.gyazo.com/90c26684de8d626ab8fc390e5e1bf8c6.jpg"
-      ><div slot="texts">
-        <s-text x="271" y="143" width="175" height="39">How to</s-text
-        ><s-text x="473" y="141" width="248" height="39">eat UDON</s-text
-        ><s-text x="748" y="141" width="24" height="37">?</s-text
-        ><s-text x="287" y="210" width="477" height="22"
-          >UDON SERVED WITH DIPPING SAUCE</s-text
-        ><s-text x="269" y="247" width="202" height="18"
-          >Put all the condiments</s-text
-        ><s-text x="474" y="247" width="5" height="18">(</s-text
-        ><s-text x="480" y="247" width="205" height="18"
-          >ginger&amp; shallot&amp; sesame</s-text
-        ><s-text x="685" y="247" width="7" height="18">)</s-text
-        ><s-text x="700" y="247" width="111" height="18">in the site</s-text
-        ><s-text x="237" y="279" width="16" height="17">2</s-text
-        ><s-text x="272" y="279" width="67" height="17">Pick up</s-text
-        ><s-text x="348" y="279" width="10" height="17">a</s-text
-        ><s-text x="366" y="279" width="389" height="17"
-          >few strands of noodles and dip them in the</s-text
-        ><s-text x="763" y="279" width="10" height="17">s</s-text
-        ><s-text x="273" y="304" width="227" height="15"
-          >Dip tempura in the sauce</s-text
-        ><s-text x="501" y="304" width="3" height="15">,</s-text
-        ><s-text x="505" y="304" width="26" height="15">too</s-text
-        ><s-text x="532" y="304" width="4" height="15">.</s-text
-        ><s-text x="558" y="341" width="16" height="13">(2</s-text
-        ><s-text x="570" y="341" width="8" height="13">)</s-text
-        ><s-text x="765" y="373" width="49" height="12">ENJOY</s-text
-        ><s-text x="817" y="373" width="5" height="12">!</s-text
-        ><s-text x="331" y="486" width="390" height="22"
-          >UDON SERVED IN DASHI SOUP</s-text
-        ><s-text x="210" y="519" width="89" height="19">Everything</s-text
-        ><s-text x="309" y="519" width="12" height="18">is</s-text
-        ><s-text x="332" y="518" width="170" height="19"
-          >already in the soup</s-text
-        ><s-text x="502" y="518" width="4" height="18">.</s-text
-        ><s-text x="515" y="517" width="292" height="19"
-          >You can dip tempura in the soup</s-text
-        ><s-text x="806" y="517" width="4" height="18">,</s-text
-        ><s-text x="811" y="516" width="26" height="19">too</s-text
-        ><s-text x="837" y="516" width="5" height="18">.</s-text
-        ><s-text x="642" y="577" width="58" height="14">ENJOY</s-text
-        ><s-text x="702" y="577" width="6" height="13">!</s-text>
-      </div></s-img
+  <body class="bg-white mx-auto max-w-4xl mt-16 mb-16 px-8">
+    <h1
+      class="flex flex-col-reverse items-center gap-4 break-keep break-words font-bold text-5xl md:flex-row"
     >
+      Searchable Image
+      <img src="/favicon.png" class="w-24" />
+    </h1>
+
+    <article class="prose lg:prose-xl mt-8">
+      <p>
+        This Web Component enables users to search for and select text within
+        images.
+      </p>
+      <p>
+        By using this component, textual information embedded in an image can be
+        exposed to the DOM, making it possible for users to perform text
+        searches or copy text in much the same way as they would with normal
+        text content.
+      </p>
+      <p>
+        Example:
+        <s-img
+          alt="A signboard explaining how to eat udon with soup"
+          src="https://i.gyazo.com/90c26684de8d626ab8fc390e5e1bf8c6.jpg"
+          ><span slot="texts">
+            <s-text x="271" y="143" width="175" height="39">How to</s-text
+            ><s-text x="473" y="141" width="248" height="39">eat UDON</s-text
+            ><s-text x="748" y="141" width="24" height="37">?</s-text
+            ><s-text x="287" y="210" width="477" height="22"
+              >UDON SERVED WITH DIPPING SAUCE</s-text
+            ><s-text x="269" y="247" width="202" height="18"
+              >Put all the condiments</s-text
+            ><s-text x="474" y="247" width="5" height="18">(</s-text
+            ><s-text x="480" y="247" width="205" height="18"
+              >ginger&amp; shallot&amp; sesame</s-text
+            ><s-text x="685" y="247" width="7" height="18">)</s-text
+            ><s-text x="700" y="247" width="111" height="18">in the site</s-text
+            ><s-text x="237" y="279" width="16" height="17">2</s-text
+            ><s-text x="272" y="279" width="67" height="17">Pick up</s-text
+            ><s-text x="348" y="279" width="10" height="17">a</s-text
+            ><s-text x="366" y="279" width="389" height="17"
+              >few strands of noodles and dip them in the</s-text
+            ><s-text x="763" y="279" width="10" height="17">s</s-text
+            ><s-text x="273" y="304" width="227" height="15"
+              >Dip tempura in the sauce</s-text
+            ><s-text x="501" y="304" width="3" height="15">,</s-text
+            ><s-text x="505" y="304" width="26" height="15">too</s-text
+            ><s-text x="532" y="304" width="4" height="15">.</s-text
+            ><s-text x="558" y="341" width="16" height="13">(2</s-text
+            ><s-text x="570" y="341" width="8" height="13">)</s-text
+            ><s-text x="765" y="373" width="49" height="12">ENJOY</s-text
+            ><s-text x="817" y="373" width="5" height="12">!</s-text
+            ><s-text x="331" y="486" width="390" height="22"
+              >UDON SERVED IN DASHI SOUP</s-text
+            ><s-text x="210" y="519" width="89" height="19">Everything</s-text
+            ><s-text x="309" y="519" width="12" height="18">is</s-text
+            ><s-text x="332" y="518" width="170" height="19"
+              >already in the soup</s-text
+            ><s-text x="502" y="518" width="4" height="18">.</s-text
+            ><s-text x="515" y="517" width="292" height="19"
+              >You can dip tempura in the soup</s-text
+            ><s-text x="806" y="517" width="4" height="18">,</s-text
+            ><s-text x="811" y="516" width="26" height="19">too</s-text
+            ><s-text x="837" y="516" width="5" height="18">.</s-text
+            ><s-text x="642" y="577" width="58" height="14">ENJOY</s-text
+            ><s-text x="702" y="577" width="6" height="13">!</s-text>
+          </span></s-img
+        >
+      </p>
+      <p>
+        For more details and source code, please see the GitHub repository:<br />
+        <a href="https://github.com/hata6502/searchable-image" target="_blank">
+          GitHub - hata6502/searchable-image
+        </a>
+      </p>
+
+      <section id="terminology">
+        <h2>Terminology</h2>
+        <dl>
+          <dt>Searchable Image</dt>
+          <dd>
+            The overall mechanism provided by this Web Component for making text
+            in images searchable.
+          </dd>
+          <dt>OCR (Optical Character Recognition)</dt>
+          <dd>
+            A technology that recognizes text from images and converts it into
+            machine-readable data.
+          </dd>
+        </dl>
+      </section>
+
+      <section id="overview">
+        <h2>Web Component Overview</h2>
+        <p>
+          The <code>&lt;s-img&gt;</code> element manages a single image along
+          with any text elements that represent text regions within that image.
+          Its key features include:
+        </p>
+        <ul>
+          <li>
+            A structure similar to the standard <code>&lt;img&gt;</code> element
+            for placing images.
+          </li>
+          <li>
+            Utilizing child elements (<code>&lt;s-text&gt;</code>, etc.) to
+            define text regions, allowing text data to exist in the DOM and be
+            searchable and copyable.
+          </li>
+        </ul>
+      </section>
+
+      <section id="element-definition">
+        <h2>Element Definitions</h2>
+
+        <h3><code>&lt;s-img&gt;</code> Element</h3>
+        <p>
+          The <code>&lt;s-img&gt;</code> element supports attributes like
+          <code>src</code> and <code>alt</code>, and provides a slot for
+          defining text regions within the image.
+        </p>
+
+        <h3><code>&lt;s-text&gt;</code> Element</h3>
+        <p>
+          The <code>&lt;s-text&gt;</code> element specifies a text region within
+          the image, along with the corresponding textual content. The following
+          attributes are defined:
+        </p>
+        <ul>
+          <li>
+            <strong>x</strong>: The left (x) coordinate of the text region in
+            pixels.
+          </li>
+          <li>
+            <strong>y</strong>: The top (y) coordinate of the text region in
+            pixels.
+          </li>
+          <li>
+            <strong>width</strong>: The width of the text region in pixels.
+          </li>
+          <li>
+            <strong>height</strong>: The height of the text region in pixels.
+          </li>
+        </ul>
+        <p>The actual text is placed inside the element as text content.</p>
+
+        <p>
+          Below is a basic example of how to mark up an image with text
+          elements:
+        </p>
+        <pre>
+&lt;s-img src="example.jpg" alt="Sample Image"&gt;
+  &lt;span slot="texts"&gt;
+    &lt;s-text x="100" y="50" width="200" height="30"&gt;Sample Text&lt;/s-text&gt;
+    &lt;!-- Add more &lt;s-text&gt; elements as needed --&gt;
+  &lt;/span&gt;
+&lt;/s-img&gt;</pre
+        >
+      </section>
+
+      <section id="use-cases">
+        <h2>Use Cases</h2>
+        <p>
+          This Web Component can be especially effective in the following
+          situations:
+        </p>
+        <ul>
+          <li>
+            <strong
+              >Documentation pages that use screenshots of diagrams or
+              tables</strong
+            ><br />
+            Text within these screenshots can also be included in searchable
+            content.
+          </li>
+          <li>
+            <strong
+              >Tutorial or guide pages relying heavily on screenshots</strong
+            ><br />
+            Even if UI labels or instructions are embedded in the image, users
+            can quickly find the information they need through built-in text
+            search.
+          </li>
+          <li>
+            <strong>Landing pages with many infographics</strong><br />
+            By placing images easily and enabling text search, it can greatly
+            improve user convenience.
+          </li>
+        </ul>
+      </section>
+
+      <section id="installation">
+        <h2>Installation</h2>
+        <p>
+          To use this Web Component, simply include the following script in your
+          <code>&lt;head&gt;</code> section:
+        </p>
+        <pre>
+&lt;script type="module" src="https://cdn.jsdelivr.net/npm/searchable-image@1.0.1/docs/index.js"&gt;&lt;/script&gt;</pre
+        >
+      </section>
+
+      <section id="tool">
+        <h2>Online OCR Tool</h2>
+        <p>Work In Progress</p>
+      </section>
+    </article>
+
+    <footer class="mt-16">
+      <p class="text-xs leading-5 text-gray-500">
+        2025&nbsp;
+        <a
+          href="https://twitter.com/hata6502"
+          target="_blank"
+          class="hover:text-gray-600"
+        >
+          hata6502
+        </a>
+      </p>
+    </footer>
   </body>
 </html>
