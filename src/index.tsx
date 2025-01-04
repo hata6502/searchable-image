@@ -4,7 +4,7 @@ import register from "preact-custom-element";
 
 const cssURL =
   //"index.css";
-  "https://cdn.jsdelivr.net/npm/searchable-image@1.0.2/docs/index.css";
+  "https://cdn.jsdelivr.net/npm/searchable-image@1.0.3/docs/index.css";
 
 const obserableAttributes = [
   "alt",
@@ -76,7 +76,12 @@ const SearchableImage: FunctionComponent<
         }
       }
 
-      await currentImage.decode();
+      if (!currentImage.complete) {
+        await new Promise((resolve, reject) => {
+          currentImage.onload = resolve;
+          currentImage.onerror = reject;
+        });
+      }
       const imageBitmap = await createImageBitmap(currentImage);
 
       if (abortController.signal.aborted) {

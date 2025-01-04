@@ -7,11 +7,15 @@
       http-equiv="Content-Security-Policy"
       content="
         default-src 'self';
-        img-src 'self' https://i.gyazo.com;
+        connect-src
+          'self'
+          https://us-central1-searchable-image.cloudfunctions.net
+        ;
+        img-src 'self' blob: https://i.gyazo.com;
         style-src
           'self'
           'unsafe-inline'
-          https://cdn.jsdelivr.net/npm/searchable-image@1.0.2/docs/index.css
+          https://cdn.jsdelivr.net/npm/searchable-image@1.0.3/docs/index.css
         ;
       "
     />
@@ -235,13 +239,26 @@
           <code>&lt;head&gt;</code> section:
         </p>
         <pre>
-&lt;script type="module" src="https://cdn.jsdelivr.net/npm/searchable-image@1.0.2/docs/index.js"&gt;&lt;/script&gt;</pre
+&lt;script type="module" src="https://cdn.jsdelivr.net/npm/searchable-image@1.0.3/docs/index.js"&gt;&lt;/script&gt;</pre
         >
       </section>
 
       <section id="tool">
         <h2>Online OCR Tool</h2>
-        <p>Work In Progress</p>
+
+        <form id="ocr-form">
+          <input id="file-input" type="file" accept="image/*" /><br />
+
+          <button
+            id="submit-button"
+            type="submit"
+            class="mt-4 rounded-md bg-neutral-900 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900"
+          >
+            Convert
+          </button>
+
+          <div id="result" class="mt-4"></div>
+        </form>
       </section>
     </article>
 
@@ -257,5 +274,7 @@
         </a>
       </p>
     </footer>
+
+    <script type="module" src="doc.js"></script>
   </body>
 </html>
