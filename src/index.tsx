@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "preact/hooks";
 import register from "preact-custom-element";
 
 const cssURL =
-  "https://cdn.jsdelivr.net/npm/searchable-image@1.0.1/docs/index.css";
+  //"index.css";
+  "https://cdn.jsdelivr.net/npm/searchable-image@1.0.2/docs/index.css";
 
 const obserableAttributes = [
   "alt",
@@ -164,7 +165,7 @@ const SearchableImage: FunctionComponent<
     <>
       <link rel="stylesheet" href={cssURL} />
 
-      <div className="container">
+      <div translate={false} className="container">
         <img ref={image} className="image" />
         <div ref={textLayer} className="text-layer" />
         <div ref={textsContainer} hidden>
