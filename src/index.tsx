@@ -1,10 +1,11 @@
 import { ComponentChildren, FunctionComponent } from "preact";
 import { useEffect, useRef, useState } from "preact/hooks";
 import register from "preact-custom-element";
+import stringWidth from "string-width";
 
 const cssURL =
   //"index.css";
-  "https://cdn.jsdelivr.net/npm/searchable-image@1.0.3/docs/index.css";
+  "https://cdn.jsdelivr.net/npm/searchable-image@1.0.4/docs/index.css";
 
 const obserableAttributes = [
   "alt",
@@ -129,9 +130,12 @@ const SearchableImage: FunctionComponent<
         const defaultFontSize = Math.min(width, height);
         const expected = Math.max(width, height);
         const textContent = searchableText.textContent ?? "";
+        // 例えば「it」2文字だと、widthよりもheightの方が大きいため、縦書きとして判定されてしまう
+        // 実際には横書きであることが多いため、2文字以下の場合は横書きとして判定させる
+        const horizontal = stringWidth(textContent) < 3 || width >= height;
 
         const text = document.createElement("span");
-        text.classList.add("text");
+        text.classList.add("text", horizontal ? "horizontal" : "vertical");
         text.style.left = `${x}px`;
         text.style.top = `${y}px`;
         text.style.letterSpacing = "0";

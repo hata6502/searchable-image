@@ -367,7 +367,15 @@ template {
 .text {
   position: absolute;
   color: transparent;
-  white-space: pre;
+  white-space: nowrap;
+
+  &.horizontal {
+    writing-mode: horizontal-tb;
+  }
+
+  &.vertical {
+    writing-mode: vertical-rl;
+  }
 
   &::selection {
     background: #cceeff;
