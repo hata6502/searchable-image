@@ -13,7 +13,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
     "@types/preact-custom-element": "^4.0.4",
-    "esbuild": "^0.24.2",
+    "esbuild": "^0.25.0",
     "http-server": "^14.1.1",
     "preact": "^10.25.4",
     "preact-custom-element": "^4.3.0",
